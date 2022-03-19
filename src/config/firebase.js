@@ -110,6 +110,7 @@ async function register(name,email,password) {
 }
 
     export{
+        db,
         register,
         login,
         SellAdd,

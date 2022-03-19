@@ -1,23 +1,29 @@
 import Header from "../../components/Header"
-import Card from "../../components/Card"
-import Grid from '@mui/material/Grid'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { getAds } from '../../config/firebase'
-import { useSelector } from "react-redux"
+// import { getAds } from '../../config/firebase'
+import { useSelector,useDispatch } from "react-redux"
+import { addAds } from "../../store/actions"
 
 
 const Home =()=>{
-    const [ads, setAds] = useState([])
+    // const [ads, setAds] = useState([])
     const navigate = useNavigate()
+    const dispatch=useDispatch()
+    
     const user=useSelector(state=>state.user)
+    const ads=useSelector(state=>state.ads)
+
     console.log(user,'User from home component');
+
+
     useEffect(async () => {
-      const tempAds = await getAds()
-      setAds(tempAds)
+      // const tempAds = await getAds()
+      // setAds(tempAds)
+      dispatch(addAds())
     }, [])
   
-    console.log('ads --->', ads)
+    // console.log('ads --->', ads)
     
   
     return (
